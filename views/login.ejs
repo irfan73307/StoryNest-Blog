@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - StoryNest</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-zinc-950 via-black to-zinc-900 text-white min-h-screen">
+
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-8 py-6 border-b border-zinc-800">
+
+<h1 class="text-xl font-semibold tracking-tight">
+🪶 StoryNest
+</h1>
+
+<a href="/" class="text-sm text-blue-400 hover:text-blue-300 transition">
+Create Account
+</a>
+
+</nav>
+
+
+<!-- LOGIN SECTION -->
+<section class="flex justify-center items-center min-h-[80vh] px-6">
+
+<div class="w-full max-w-md bg-zinc-900/60 backdrop-blur border border-zinc-800 rounded-2xl p-10 shadow-xl">
+
+<h2 class="text-3xl font-semibold mb-2 text-center">
+Welcome Back
+</h2>
+
+<p class="text-zinc-400 text-center mb-8">
+Continue your writing journey
+</p>
+
+
+<form action="/login" method="post" class="space-y-6">
+
+<!-- EMAIL -->
+<div>
+<label class="text-sm text-zinc-400">Email Address</label>
+
+<input type="email" name="email" required
+class="w-full mt-2 px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl
+focus:ring-2 focus:ring-blue-500 outline-none transition">
+</div>
+
+
+<!-- PASSWORD -->
+<div>
+<label class="text-sm text-zinc-400">Password</label>
+
+<input type="password" name="password" required
+class="w-full mt-2 px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl
+focus:ring-2 focus:ring-blue-500 outline-none transition">
+</div>
+
+
+<!-- BUTTON -->
+<button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 py-3 rounded-xl font-medium hover:scale-[1.02] transition">
+Login
+</button>
+
+</form>
+
+
+<p class="text-sm text-zinc-500 mt-8 text-center">
+New here?
+<a href="/" class="text-blue-400 hover:underline">
+Create account
+</a>
+</p>
+
+</div>
+
+</section>
+
+</body>
+</html>

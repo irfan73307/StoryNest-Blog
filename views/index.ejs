@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryNest</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-zinc-950 via-black to-zinc-900 text-white min-h-screen">
+
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-8 py-6 border-b border-zinc-800">
+
+<h1 class="text-xl font-semibold tracking-tight">
+🪶 StoryNest
+</h1>
+
+<div class="flex gap-4">
+
+<% if(loggedIn){ %>
+
+<a href="/profile"
+class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg transition">
+Profile
+</a>
+
+<a href="/logout"
+class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg transition">
+Logout
+</a>
+
+<% } else { %>
+
+<a href="/login"
+class="text-sm text-blue-400 hover:text-blue-300 transition">
+Login
+</a>
+
+<% } %>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+<section class="text-center max-w-3xl mx-auto mt-20 px-6">
+
+<h1 class="text-5xl font-bold leading-tight mb-6">
+Where Ideas Become Stories
+</h1>
+
+<p class="text-zinc-400 text-lg leading-relaxed">
+StoryNest is a creative platform designed for thinkers,
+writers and dreamers who want to share meaningful stories.
+</p>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="text-center max-w-2xl mx-auto mt-16 px-6">
+
+<h2 class="text-xl font-semibold text-blue-400 mb-4">
+Why StoryNest?
+</h2>
+
+<p class="text-zinc-400">
+Express yourself freely, build your creative identity and connect with readers across the world.
+</p>
+
+</section>
+
+
+<!-- SIGNUP CARD -->
+<section class="flex justify-center mt-20 px-6 pb-20">
+
+<div class="w-full max-w-lg bg-zinc-900/60 backdrop-blur border border-zinc-800 rounded-2xl p-10 shadow-xl">
+
+<h2 class="text-3xl font-semibold mb-2 text-center">
+Create Account
+</h2>
+
+<p class="text-zinc-400 text-center mb-8">
+Start your creative journey today
+</p>
+
+
+<form action="/register" method="post" class="space-y-6">
+
+<!-- USERNAME -->
+<div>
+<label class="text-sm text-zinc-400">Username</label>
+<input type="text" name="username" required
+class="w-full mt-2 px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+</div>
+
+
+<!-- NAME -->
+<div>
+<label class="text-sm text-zinc-400">Full Name</label>
+<input type="text" name="name" required
+class="w-full mt-2 px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+</div>
+
+
+<!-- EMAIL -->
+<div>
+<label class="text-sm text-zinc-400">Email</label>
+<input type="email" name="email" required
+class="w-full mt-2 px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+</div>
+
+
+<!-- PASSWORD -->
+<div>
+<label class="text-sm text-zinc-400">Password</label>
+<input type="password" name="password" required
+class="w-full mt-2 px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+
+<p class="text-xs text-zinc-500 mt-2">
+Minimum 6 characters recommended
+</p>
+
+</div>
+
+
+<!-- AGE -->
+<div>
+<label class="text-sm text-zinc-400">Age</label>
+<input type="number" name="age" required
+class="w-full mt-2 px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+</div>
+
+
+<!-- BUTTON -->
+<button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 py-3 rounded-xl font-medium hover:scale-[1.02] transition">
+Create Account
+</button>
+
+</form>
+
+
+<p class="text-xs text-zinc-500 mt-8 text-center">
+By signing up you agree to our Terms & Privacy Policy
+</p>
+
+</div>
+
+</section>
+
+</body>
+</html>

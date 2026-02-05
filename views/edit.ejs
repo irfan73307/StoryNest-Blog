@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Post - StoryNest</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-zinc-950 via-black to-zinc-900 text-white min-h-screen">
+
+
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-8 py-6 border-b border-zinc-800">
+
+<h1 class="text-xl font-semibold tracking-tight">
+🪶 StoryNest
+</h1>
+
+<div class="flex gap-4">
+
+<a href="/profile"
+class="text-sm bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg transition">
+Dashboard
+</a>
+
+<a href="/logout"
+class="text-sm bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg transition">
+Logout
+</a>
+
+</div>
+
+</nav>
+
+
+
+<!-- EDITOR SECTION -->
+<section class="flex justify-center px-6 mt-16 pb-20">
+
+<div class="w-full max-w-3xl bg-zinc-900/60 backdrop-blur border border-zinc-800 rounded-2xl p-10 shadow-xl">
+
+<h2 class="text-3xl font-semibold mb-2">
+Edit Your Story
+</h2>
+
+<p class="text-zinc-400 mb-8">
+Refine your thoughts and make your story stronger.
+</p>
+
+
+<form action="/edit/<%= post._id %>" method="post">
+
+<textarea name="content"
+rows="10"
+class="w-full bg-zinc-950 border border-zinc-800 rounded-xl p-5 text-lg leading-relaxed outline-none focus:ring-2 focus:ring-blue-500 transition resize-none"><%= post.content %></textarea>
+
+
+<div class="flex justify-between items-center mt-8">
+
+<a href="/profile"
+class="text-zinc-400 hover:text-white transition">
+Cancel
+</a>
+
+<button class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-2 rounded-xl font-medium hover:scale-[1.02] transition">
+Update Post
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</section>
+
+</body>
+</html>
