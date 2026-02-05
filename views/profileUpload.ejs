@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload - StoryNest</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-zinc-950 via-black to-zinc-900 text-white min-h-screen">
+
+<!-- NAVBAR -->
+<nav class="flex justify-between items-center px-8 py-6 border-b border-zinc-800">
+
+<h1 class="text-xl font-semibold tracking-tight">
+🪶 StoryNest
+</h1>
+
+<a href="/" class="text-sm text-blue-400 hover:text-blue-300 transition">
+Create Account
+</a>
+
+</nav>
+
+
+<!-- UPLOAD SECTION -->
+<section class="flex justify-center items-center min-h-[80vh] px-6">
+
+<div class="w-full max-w-md bg-zinc-900/60 backdrop-blur border border-zinc-800 rounded-2xl p-10 shadow-xl">
+
+<h2 class="text-3xl font-semibold mb-2 text-center">
+Upload Your Profile Picture
+</h2>
+
+<p class="text-zinc-400 text-center mb-8">
+Continue your writing journey
+</p>
+
+
+<form autocomplete="off" action="/upload" method="post" enctype="multipart/form-data" class="space-y-6">
+
+<!-- File Upload -->
+<div>
+<label class="text-sm text-zinc-400">Upload File</label>
+
+<input type="file" name="image" required
+class="w-full mt-2 px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl
+focus:ring-2 focus:ring-blue-500 outline-none transition">
+</div>
+
+ 
+<!-- BUTTON -->
+<button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 py-3 rounded-xl font-medium hover:scale-[1.02] transition">
+Upload
+</button>
+
+</form>
+
+
+<p class="text-sm text-zinc-500 mt-8 text-center">
+Add your File here
+
+</p>
+
+</div>
+
+</section>
+
+</body>
+</html>

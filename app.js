@@ -1,16 +1,29 @@
 const express = require('express');
 const app = express();
+require('dotenv').config();
+const connectDB = require('./config/db');
+connectDB();
 const userModel = require('./models/user');
 const postModel = require('./models/post');
 const cookieParser = require('cookie-parser');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 const { render } = require('ejs');
+const multerconfig=require('./config/multerconfig');
+const path=require('path');
 
+
+
+
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine',"ejs");
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
+
+
+ 
+
 
 app.get("/", (req, res) => {
 
@@ -24,6 +37,17 @@ app.get("/", (req, res) => {
 
 });
 
+ 
+app.get('/profileUpload',isloggedin, async (req, res) => {
+  res.render('profileUpload');
+});
+
+app.post('/upload',isloggedin, multerconfig.single('image'), async (req, res) => {
+  let user  = await userModel.findOne({email:req.user.email});
+  user.profilepic=req.file.filename;
+  await user.save();
+  res.redirect('/profile');
+});
 app.post('/register', async (req, res) => {
   let { username, name, age, email, password } = req.body;
 
@@ -41,7 +65,7 @@ app.post('/register', async (req, res) => {
             email,
             password:hash
         });
-        let token = jwt.sign({email:email,userid:user._id},'secret');
+        let token = jwt.sign({email:email,userid:user._id},process.env.JWT_SECRET);
         res.cookie('token',token);
         res.redirect('/profile');
 
@@ -90,8 +114,8 @@ app.post('/login', async (req,res)=>{
 
   bcrypt.compare(password,user.password,(err,result)=>{
     if(result){
-      let token = jwt.sign({email:email,userid:user._id},'secret');
-      res.cookie('token',token);
+      let token = jwt.sign({email:email,userid:user._id},process.env.JWT_SECRET);
+      res.cookie('token',token, { httpOnly: true });
       res.redirect('/profile');
 
     }else{
@@ -104,7 +128,7 @@ app.post('/login', async (req,res)=>{
 })
 
 app.get('/logout',(req,res)=>{
-  res.cookie('token',"");
+  res.cookie('token',"", { httpOnly: true, maxAge: 0 });
   
    res.redirect("/")
 })
@@ -140,12 +164,14 @@ app.post('/edit/:id',isloggedin,async (req,res)=>{
   await post.save();
   res.redirect('/profile');
 })
+
+
 function isloggedin(req,res,next){
   let token = req.cookies.token;
   if(token===""){
     return res.redirect('/login');
   } else {
-    jwt.verify(token,'secret', (err,decoded)=>{ 
+    jwt.verify(token, process.env.JWT_SECRET, (err,decoded)=>{ 
       if(err){
         return res.redirect('/login');
       } else {
@@ -156,5 +182,6 @@ function isloggedin(req,res,next){
   }
 }
 
-
-app.listen(3000);
+app.listen(process.env.PORT, () => {
+    console.log("Server running...");
+});
